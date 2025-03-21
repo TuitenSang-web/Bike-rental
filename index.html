@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cho Thuê Xe Đạp</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background: #008080;
+            color: white;
+            padding: 10px;
+            font-size: 24px;
+        }
+        .container {
+            margin: 20px;
+        }
+        .bike {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 200px;
+        }
+        button {
+            background: #008080;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background: #005f5f;
+        }
+    </style>
+</head>
+<body>
+    <header>Cho Thuê Xe Đạp</header>
+    <div class="container" id="bike-list">
+        <!-- Xe đạp sẽ được hiển thị ở đây -->
+    </div>
+    
+    <script>
+        const bikes = [
+            { id: 1, name: "Xe Đạp Địa Hình", price: "50,000 VND/h" },
+            { id: 2, name: "Xe Đạp Đua", price: "70,000 VND/h" },
+            { id: 3, name: "Xe Đạp Thường", price: "30,000 VND/h" }
+        ];
+        
+        function displayBikes() {
+            const bikeList = document.getElementById("bike-list");
+            bikeList.innerHTML = "";
+            
+            bikes.forEach(bike => {
+                const bikeElement = document.createElement("div");
+                bikeElement.classList.add("bike");
+                bikeElement.innerHTML = `
+                    <h3>${bike.name}</h3>
+                    <p>Giá: ${bike.price}</p>
+                    <button onclick="rentBike(${bike.id})">Thuê Ngay</button>
+                `;
+                bikeList.appendChild(bikeElement);
+            });
+        }
+        
+        function rentBike(id) {
+            alert("Bạn đã thuê thành công xe có ID: " + id);
+        }
+        
+        displayBikes();
+    </script>
+</body>
+</html>
